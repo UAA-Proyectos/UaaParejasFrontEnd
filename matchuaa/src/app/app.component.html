@@ -1,0 +1,6 @@
+<div *ngIf="!isPrivatePage() else showInicio" >
+  <app-navbar></app-navbar>
+</div>
+<ng-template #showInicio>
+  <router-outlet></router-outlet>
+</ng-template>
