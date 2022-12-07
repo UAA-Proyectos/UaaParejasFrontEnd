@@ -6,10 +6,16 @@ import { HelpComponent } from './help/help.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { PublicRoute } from '../auth/private-route';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 
 
 @NgModule({
+  providers:[ 
+    PublicRoute
+  ],
   declarations: [
     HomeComponent,
     AboutComponent,
@@ -19,7 +25,9 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    AngularMaterialModule,
+    PublicRoutingModule,
+    FormsModule
   ],
   exports: [
     NavbarComponent

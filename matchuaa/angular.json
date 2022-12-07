@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "scripts": []
           },
@@ -103,8 +104,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "ec710c0b-8d87-4704-ad67-8018955c10b6"
   }
 }

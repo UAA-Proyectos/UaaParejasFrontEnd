@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-tab-group dynamicHeight>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>manage_accounts</mat-icon>&nbsp;editar
+            </ng-template>
+            <app-profile-form></app-profile-form>
+        </mat-tab>
+        <mat-tab label="Second">
+            <ng-template mat-tab-label>
+                <mat-icon>visibility</mat-icon> &nbsp;vista previa
+            </ng-template>
+            <app-profile-preview></app-profile-preview>
+        </mat-tab>
+    </mat-tab-group>
+</div>

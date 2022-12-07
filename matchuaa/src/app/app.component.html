@@ -1,6 +1,12 @@
-<div *ngIf="!isPrivatePage() else showInicio" >
+<div *ngIf="!isPrivatePage() else showPrivate">
   <app-navbar></app-navbar>
 </div>
-<ng-template #showInicio>
-  <router-outlet></router-outlet>
+<ng-template #showPrivate>
+  <div *ngIf="!isAuthPage() else notLogged">
+    <app-on-login></app-on-login>
+  </div>
+
+  <ng-template #notLogged>
+    <router-outlet></router-outlet>
+  </ng-template>
 </ng-template>

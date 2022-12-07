@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.container-fluid {
+  height: scroll !important;
+}
+
+.card {
+  margin: 10px 0px;
+  width: 330px;
+  height: auto;
+  background-color: white;
+  font-family: 'Rubik', sans-serif
+}
+
+.card2 {
+  height: auto;
+  background-color: #f4f5fc;
+  margin-top: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 20px
+}
+
+.carousel {
+  margin-top: -20px !important
+}
+
+.card2 h5 {
+  font-weight: 700
+}
+
+.card2 p {
+  font-size: 13px;
+  margin-top: -10px;
+  color: #8b8b90
+}
+
+.size h6 {
+  color: #8b8b90
+}
+
+.diff_sizes {
+  width: 100% !important
+}
+
+.diff_sizes span {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  padding: 2px;
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.5s
+}
+
+.diff_sizes span:hover {
+  background-color: #ed8a14 !important;
+  color: #fff;
+  font-weight: bold
+}
+
+.color h6 {
+  color: #8b8b90
+}
+
+.diff_color {
+  position: relative
+}
+
+.diff_color span {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff
+}
+
+.diff_color span:nth-child(1)::before {
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  background-color: red;
+  border-radius: 5px
+}
+
+.diff_color span:nth-child(1):hover {
+  border: 2px solid red !important
+}
+
+.diff_color span:nth-child(2)::before {
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  background-color: blue;
+  border-radius: 5px
+}
+
+.diff_color span:nth-child(2):hover {
+  border: 2px solid blue !important
+}
+
+.diff_color span:nth-child(3)::before {
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  background-color: black;
+  border-radius: 5px
+}
+
+.diff_color span:nth-child(3):hover {
+  border: 2px solid black !important
+}
+
+.button {
+  position: relative
+}
+
+.button button {
+  height: 45px;
+  width: 100%;
+  background-color: #ff8a00;
+  border: none;
+  outline: 0;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s
+}
+
+.button button:hover {
+  background-color: #bf6e0e;
+  font-weight: bold;
+  letter-spacing: 1px
+}
+
+.button p {
+  position: absolute;
+  right: 10px;
+  top: 24px;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s
+}
+
+.button:hover p {
+  font-weight: bold !important;
+  letter-spacing: 1px !important
+}
+
+.carousel-inner {
+  max-height: 350px !important;
+  height: 350px !important;
+  margin: auto;
+}
+
+.carousel-indicators {
+  margin-bottom: 8px;
+}
+
+.carousel-indicators>li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-item img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+
+
+
+.tinder--buttons {
+  flex: 0 0 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.tinder--buttons button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  background: #FFFFFF;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.tinder--buttons button:focus {
+  outline: 0;
+}
+
+.tinder--buttons i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.fa-heart {
+  color: #f40000;
+}
+
+.fa-remove {
+  color: #ff8800;
+}
+
+mat-chip {
+  margin-bottom: 2px;
+  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+  color: white !important;
+}

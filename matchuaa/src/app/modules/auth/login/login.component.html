@@ -1,1 +1,52 @@
-<p>login works!</p>
+<mat-toolbar class="mine">
+    <mat-toolbar-row>
+        <span class="span"><img src="assets/img/header.svg" alt="header_logo"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="main">
+       <!-- Sing in  Form -->
+       <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="assets/img/signin-image.jpg" alt="sing up image"></figure>
+                    <a routerLink="/auth/sign-up" class="signup-image-link">Crear una cuenta</a>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Iniciar Sesion</h2>
+                    <form [formGroup]="loginForm">
+                        <mat-form-field class="formGroup" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email address" formControlName="email" />
+                            <mat-error *ngIf="email?.errors?.['required']">
+                                Email requerido
+                            </mat-error>
+                            <mat-error *ngIf="email?.errors?.['email']">
+                                Introduce un email valido
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field  class="formGroup" appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput type="password" placeholder="Contraseña" formControlName="password" />
+                            <mat-error *ngIf="password?.errors?.['required']">
+                                Contraseña requerida
+                            </mat-error>
+                            <mat-error *ngIf="password?.errors?.['minlength']">
+                                Contraseña demasiado corta
+                            </mat-error>
+                        </mat-form-field>
+                        <div class="center margin-top">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">
+                                <span>Login</span>
+                                &nbsp;
+                                <mat-icon>start</mat-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

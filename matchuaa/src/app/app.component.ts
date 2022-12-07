@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './modules/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,16 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'matchuaa';
 
-  constructor(private router: Router) {
+  loogedIn: boolean = false
+  constructor(private router: Router, private authService: AuthService) {
 
   }
 
   isPrivatePage(): boolean {
-    return  (this.router.url.includes("/auth") || this.router.url.includes("/app")) 
+    return (this.router.url.includes("/auth") || this.router.url.includes("/app"))
+  }
+
+  isAuthPage(): boolean {
+    return (this.router.url.includes("/auth"))
   }
 }
