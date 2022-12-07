@@ -1,0 +1,23 @@
+<div id="paper-back">
+	<nav>
+		<div class="close"></div>
+		<a class="router" routerLink='/home' [routerLinkActive]="['active']" >Inicio</a>
+		<a class="router"  routerLink='/about' [routerLinkActive]="['active']">Acerca De</a>
+		<a class="router" routerLink='/help' [routerLinkActive]="['active']">Ayuda</a>
+		<a class="router" routerLink="/contact" [routerLinkActive]="['active']">Contacto</a>
+	</nav>
+</div>
+<div id="paper-window">
+	<div id="paper-front">
+		<div class="hamburger"><span></span></div>
+		<div id="container">
+			<section>
+				<img src="assets/4.svg">
+			</section>
+			<section>
+				<router-outlet></router-outlet>
+			</section>
+		
+		</div>
+	</div>
+</div>
