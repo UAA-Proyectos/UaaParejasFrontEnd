@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicModule } from "./modules/public/public.module";
 import { HttpClientModule } from '@angular/common/http';
-import { AuthRoute, PrivateRoute, PublicRoute } from './modules/auth/private-route';
+import { AdminRoute, AuthRoute, PrivateRoute, PublicRoute } from './modules/auth/private-route';
 import { LOCALE_ID } from '@angular/core';
 import { ApplicationModule } from './modules/application/application.module';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "es-MX" },
-        PrivateRoute, AuthRoute, PublicRoute],
+        PrivateRoute, AuthRoute, PublicRoute, AdminRoute],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

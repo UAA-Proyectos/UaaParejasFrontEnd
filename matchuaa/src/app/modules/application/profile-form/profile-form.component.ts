@@ -92,7 +92,7 @@ export class ProfileFormComponent implements OnInit {
       .pipe(untilDestroyed(this), tap(console.log))
       .subscribe((user) => {
         this.user = user
-        this.profilePic = user.photos[0]?.path ?? "/assets/img/profile.png"
+        this.profilePic = user.photos[user?.photos?.length-1]?.path ?? "/assets/img/profile.png"
         this.interestList.forEach(element => {
           element.state = false;
         });

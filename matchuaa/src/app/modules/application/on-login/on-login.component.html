@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container *ngIf="user$ | async  as user">
   <mat-sidenav #sidenav mode="side" opened="isExpanded">
     <mat-nav-list>
 
@@ -20,6 +20,11 @@
       <mat-list-item [routerLink]="'app/my-matches'" [routerLinkActive]="['active']">
         <mat-icon mat-list-icon>supervisor_account</mat-icon>
         <span *ngIf="isExpanded" class="menu-item">Mis matches</span>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="user.user.user_type == 1" [routerLink]="'app/reports'" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>query_stats</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Reportes</span>
       </mat-list-item>
 
     </mat-nav-list>

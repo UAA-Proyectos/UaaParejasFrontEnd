@@ -7,7 +7,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthRoute } from './private-route';
+import { AdminRoute, AuthRoute } from './private-route';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { AuthRoute } from './private-route';
     SignUpComponent
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'en-nz' }, AuthRoute], 
+    { provide: LOCALE_ID, useValue: 'en-nz' }, AuthRoute, AdminRoute], 
   imports: [
     CommonModule,
     AuthRoutingModule,
