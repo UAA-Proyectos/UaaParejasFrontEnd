@@ -35,6 +35,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 const materialModules = [
   CdkTreeModule,
   MatAutocompleteModule,
@@ -42,6 +43,7 @@ const materialModules = [
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  
   MatDividerModule,
   MatExpansionModule,
   MatIconModule,
@@ -62,6 +64,7 @@ const materialModules = [
   MatButtonToggleModule,
   MatTreeModule,
   OverlayModule,
+  MatProgressBarModule,
   PortalModule,
   MatBadgeModule,
   MatGridListModule,
