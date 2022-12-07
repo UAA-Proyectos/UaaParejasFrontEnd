@@ -1,0 +1,59 @@
+mat-sidenav-container {
+  height: 100%;
+  min-height: 100%;
+
+  mat-sidenav {
+    background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+    color: white;
+
+    mat-nav-list {
+      .menu-item {
+        min-width: 100px;
+        margin-left: 8px;
+        color: wheat;
+      }
+
+      .chevron-button {
+        transition: 300ms ease-in-out;
+        transform: rotate(0deg);
+      }
+
+      .chevron-button.rotated {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+mat-icon {
+  color: white;
+}
+
+.span {
+  margin: 0 auto;
+}
+
+.img {
+  height: auto;
+
+  max-width: 100%;
+}
+
+.active {
+  background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+}
+
+.content {
+  max-height: calc(100vh - 98px);
+  margin: 16px;
+  margin-left: 32px;
+  border-radius: 10px;
+
+  overflow-y: auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.mat-sidenav-container {
+  height: calc(100vh);
+}

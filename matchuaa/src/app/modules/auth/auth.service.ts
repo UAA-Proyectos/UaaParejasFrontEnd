@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { LoginResponse, UserCredentials, UserRegister } from 'src/app/models/user';
@@ -17,7 +18,7 @@ export class AuthService {
   get isLogged(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(userCredentials: UserCredentials): Observable<LoginResponse | void> {
     return this.http.post<LoginResponse>(`${environment.API_URL}/auth`, userCredentials).pipe(
@@ -41,20 +42,27 @@ export class AuthService {
     )
   }
 
+  logout(): Observable<void>{
+    return this.http.post<void>(`${environment.API_URL}/logout`, []).pipe(
+      map((res: void)=> {
+        this.router.navigate(['home'])
+        this.loggedIn.next(false);
+        localStorage.removeItem('userId');
+        return res
+      }), catchError((err) => this.handlerError(err))
+    )
+  }
 
   private saveUserId(id: number) {
     window.localStorage.setItem('userId', id.toString());
   }
 
-  private getUserId(): number | null {
+  public getUserId(): number | null {
     const userId = window.localStorage.getItem('userId')
     return userId ? parseInt(userId) : null;
   }
 
-  private logout() {
-    this.loggedIn.next(false);
-    localStorage.removeItem('userId');
-  }
+
 
   private handlerError(err: any): Observable<never> {
     if (err.status == 401) {
