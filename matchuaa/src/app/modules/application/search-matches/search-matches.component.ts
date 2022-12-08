@@ -37,12 +37,10 @@ export class SearchMatchesComponent implements OnInit {
       if (res == true) {
         Swal.fire("Tienes un nuevo match", "Felicidades, has hecho match!", "success");
         this.user = null
-        this.userService.getPossibleMatch().pipe(untilDestroyed(this), tap(console.log))
-          .subscribe((user) => {
-            this.user = user;
-
-          });
       }
+      this.userService.getPossibleMatch().subscribe((user) => {
+        this.user = user;
+      });
     })
   }
 
@@ -57,12 +55,11 @@ export class SearchMatchesComponent implements OnInit {
       if (res == true) {
         Swal.fire("Tienes un nuevo match", "Felicidades, has hecho match!", "success");
         this.user = null
-        this.userService.getPossibleMatch().pipe(untilDestroyed(this), tap(console.log))
-          .subscribe((user) => {
-            this.user = user;
-
-          });
       }
+      this.userService.getPossibleMatch().subscribe((user) => {
+        this.user = user;
+
+      });
     })
   }
 
