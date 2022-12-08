@@ -1,3 +1,7 @@
+<button mat-fab color="primary" (click)="getUserProfile()"   style="float: right; margin: 10px;">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
 <div class="container-fluid d-flex justify-content-center align-items-center vh-30" *ngIf="user != null else onLoading">
     <div class="card rounded-3 ">
         <div class="top p-3 d-flex justify-content-between"> </div>
@@ -19,7 +23,7 @@
                 <ng-container *ngFor="let photo of user.photos; let i = index">
                     <div *ngIf="i == 0; else notActive2" class="carousel-item w-100 h-100 active">
                         <div class="parent d-flex justify-content-center">
-                            <img [src]="photo.path" class="d-block w-100 " alt="..." tyle="height:300px ;">
+                            <img [src]="photo.path" class="d-block w-100 " alt="...">
                         </div>
                     </div>
 

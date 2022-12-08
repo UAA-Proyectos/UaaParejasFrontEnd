@@ -4,7 +4,7 @@
       <mat-divider></mat-divider>
       <mat-selection-list [multiple]="false" [formControl]="chatListControl">
     
-        <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.match.id_match">
+        <mat-list-option *ngFor="let chat of myChats" [value]="chat.match.id_match">
           <img
             matListAvatar
             [src]="

@@ -24,6 +24,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${environment.API_URL}/auth`, userCredentials).pipe(
       map((res: LoginResponse) => {
         this.saveUserId(res.id);
+        this.setUserType(res.user_type)
         this.loggedIn.next(true);
         return res;
       }),
@@ -63,6 +64,14 @@ export class AuthService {
   }
 
 
+  private setUserType(user_type: number){
+    window.localStorage.setItem('user_type', user_type.toString());
+  }
+
+  public getUserType(): number | null {
+    const user_type = window.localStorage.getItem('user_type')
+    return user_type ? parseInt(user_type) : null;
+  }
 
   private handlerError(err: any): Observable<never> {
     if (err.status == 401) {

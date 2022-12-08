@@ -24,13 +24,15 @@ export class MyMatchesComponent implements OnInit {
   current_match_id: number | null = null
 
   constructor(private chatService: ChatService, private authService: AuthService, private toast: HotToastService) { }
- /* messages$: Observable<any | null> = this.chatListControl.valueChanges.pipe(
-    map(value => value![0]),
-    switchMap((match_id => this.chatService.getMesssages(parseInt(match_id!))))
-  )*/
-  messages:any= []
+  /* messages$: Observable<any | null> = this.chatListControl.valueChanges.pipe(
+     map(value => value![0]),
+     switchMap((match_id => this.chatService.getMesssages(parseInt(match_id!))))
+   )*/
+  messages: any = []
 
   myChats$: Observable<Chat[]> = this.chatService.chats$
+
+  myChats: null | Chat[] = null;
 
   selectedChat$: Observable<any | null> = combineLatest([
     this.chatListControl.valueChanges,
@@ -48,18 +50,22 @@ export class MyMatchesComponent implements OnInit {
     interval(2 * 500)
       .pipe(
         mergeMap(() => this.chatService.chats$))
-      .subscribe(data => console.log(data))
+      .subscribe(data => {
+        if (data.length != this.myChats?.length) {
+          this.myChats = data
+        }
+      })
 
     interval(2 * 500)
       .pipe(
         mergeMap(() => this.chatService.getMesssages(this.current_match_id)))
       .subscribe(data => {
-        if(data.length != this.messages.length){
+        if (data.length != this.messages.length) {
           this.messages = data
           this.scrollToBottom()
         }
-        
-      
+
+
       })
 
   }

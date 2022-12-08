@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { tap } from 'rxjs';
+import { interval, mergeMap, tap } from 'rxjs';
 import { UserProfile } from 'src/app/models/user';
 import { UserServiceService } from '../user-service.service';
 
@@ -20,14 +20,11 @@ export class ProfilePreviewComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUserProfile$
       .pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((user) => {
-        this.user = user;
-
-      });
+      .subscribe((user) => { this.user = user; });
   }
 
   getUserProfile() {
-    this.userService.currentUserProfile$.pipe()
+    this.userService.currentUserProfile$.subscribe((user) => this.user = user)
   }
 
 }

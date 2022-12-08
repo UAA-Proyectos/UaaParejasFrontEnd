@@ -51,5 +51,22 @@ export class PublicRoute implements CanActivate {
   }
 }
 
+@Injectable()
+export class AdminRoute implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) { }
+
+  canActivate(): boolean {
+    const user_type = this.authService.getUserType() ??  0
+    if (user_type == 0) {
+      this.router.navigate(['/app/search-match']);
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+}
+
+
 
 

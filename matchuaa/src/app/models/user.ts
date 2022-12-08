@@ -4,7 +4,8 @@ export interface UserCredentials {
 }
 
 export interface LoginResponse {
-    id: number
+    id: number,
+    user_type: number
 }
 
 export interface UserRegister {
@@ -24,7 +25,8 @@ export interface UserInformation {
     location: string | null,
     id_sexual_orientation: number | null | undefined,
     gender: number | null,
-    show_me: number | null
+    show_me: number | null,
+    user_type: number
 }
 
 export interface UpdateProfile {
