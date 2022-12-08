@@ -32,7 +32,7 @@ export class MyMatchesComponent implements OnInit {
 
   myChats$: Observable<Chat[]> = this.chatService.chats$
 
-  myChats: null | Chat[] = null;
+  myChats: Chat[] = [];
 
   selectedChat$: Observable<any | null> = combineLatest([
     this.chatListControl.valueChanges,
