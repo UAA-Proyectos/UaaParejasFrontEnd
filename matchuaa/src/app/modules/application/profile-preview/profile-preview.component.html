@@ -1,0 +1,73 @@
+<button mat-fab color="primary" (click)="getUserProfile()"   style="float: right; margin: 10px;">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+<div class="container-fluid d-flex justify-content-center align-items-center vh-30" *ngIf="user != null else onLoading">
+    <div class="card rounded-3 ">
+        <div class="top p-3 d-flex justify-content-between"> </div>
+        <div id="carouselExampleIndicators" class="carousel slide p-3 " data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <ng-container *ngFor="let photo of user.photos; let i = index">
+                    <button *ngIf="i == 0; else notActive" class="active" type="button"
+                        data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i" aria-current="true"
+                        [attr.aria-label]=" 'Slide ' + i">
+                    </button>
+                    <ng-template #notActive>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
+                            [attr.aria-label]=" 'Slide ' + i">
+                        </button>
+                    </ng-template>
+                </ng-container>
+            </div>
+            <div class="carousel-inner img-center-vertical">
+                <ng-container *ngFor="let photo of user.photos; let i = index">
+                    <div *ngIf="i == 0; else notActive2" class="carousel-item w-100 h-100 active">
+                        <div class="parent d-flex justify-content-center">
+                            <img [src]="photo.path" class="d-block w-100 " alt="...">
+                        </div>
+                    </div>
+
+                    <ng-template #notActive2>
+
+                        <div class="carousel-item w-100 h-100">
+                            <div class="parent d-flex justify-content-center">
+                                <img [src]="photo.path" class="d-block w-100" alt="..." style="height:300px ;">
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="card2 w-100">
+            <h5>{{user.user.username}}</h5>
+            <p> {{user.user.location}} 🇲🇽</p>
+            <div class="size">
+                <h6 class="fw-bold">Descripción</h6>
+                <div class="diff_sizes d-flex justify-content-between " style="white-space: pre-line">
+                    {{user.user.description}} </div>
+            </div>
+            <div class="color">
+                <h6 class="mt-2 fw-bold">Intereses</h6>
+                <div class="diff_color gap-3">
+                    <mat-chip *ngFor="let interest of user.interest">{{interest.name}}</mat-chip>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<ng-template #onLoading>
+    <mat-spinner diameter="50" strokeWidth="5"></mat-spinner>
+</ng-template>

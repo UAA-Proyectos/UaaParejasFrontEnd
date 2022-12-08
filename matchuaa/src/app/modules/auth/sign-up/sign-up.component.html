@@ -1,0 +1,88 @@
+<mat-toolbar class="mine">
+    <mat-toolbar-row>
+        <span class="span"><img src="assets/img/header.svg" alt="header_logo"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form [formGroup]="signUpForm" class="register-form" id="register-form">
+                        <mat-form-field class="formGroup">
+                            <input matInput placeholder="Nombre" formControlName="user" type="text" />
+                            <mat-error *ngIf="user?.errors?.['required']">
+                                Nombre requerido
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="formGroup">
+                            <input matInput placeholder="Email" formControlName="email" />
+                            <mat-error *ngIf="email?.errors?.['required']">
+                                Email requerido
+                            </mat-error>
+                            <mat-error *ngIf="email?.errors?.['email']">
+                                Introduce un email valido
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="formGroup">
+                            <input matInput type="password" placeholder="Contraseña" formControlName="pass" />
+                            <mat-error *ngIf="pass?.errors?.['required']">
+                                Contraseña requerida
+                            </mat-error>
+                            <mat-error *ngIf="pass?.errors?.['minlength']">
+                                Contraseña demasiado corta
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="formGroup">
+                            <input matInput type="password" placeholder="Confirma tu contraseña"
+                                formControlName="confirmPassword" />
+                            <mat-error *ngIf="confirmPassword?.errors?.['required']">
+                                Confirmación de contraseña requerida
+                            </mat-error>
+                            <mat-error *ngIf="confirmPassword?.errors?.['passwordsDontMatch']">
+                                <small> contraseñas no coinciden</small>
+                            </mat-error>
+                        </mat-form-field>
+            
+                        <mat-form-field class="formGroup">
+                            <input placeholder="Fecha de nacimiento" matInput [matDatepicker]="picker"  formControlName="date">
+                            <mat-error *ngIf="date?.errors?.['required']">
+                                <small> Fecha de nacimiento requerida</small>
+                            </mat-error>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                                  <mat-error *ngIf="signUpForm?.errors?.['passwordsDontMatch']">
+                            <small> contraseñas no coinciden</small>
+                        </mat-error>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span> Estoy de acuerdo
+                                con los <a href="#" class="term-service">Terminos del Servicio</a></label>
+                        </div>
+                        <div class="form-group form-button">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="signUpForm.invalid" (click)="signUp()">
+                                <span>Registrarme</span>
+                                &nbsp;
+                                <span class="material-icons">
+                                    how_to_reg
+                                    </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="assets/img/signup-image.jpg" alt="sing up image"></figure>
+                    <a routerLink="/auth/login" class="signup-image-link">Ya tengo una cuenta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

@@ -1,0 +1,157 @@
+<div class="container" *ngIf="user$ | async as userP; else showLoading">
+    <div class="avatar-upload">
+        <div class="avatar-edit">
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <img id="imagePreview" [src]="profilePic">
+        </div>
+    </div>
+    <form #profileForm="ngForm">
+        <mat-accordion>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Nombre
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="nombre a mostrar" [(ngModel)]="this.user!.user!.username"
+                        name="username" />
+                </mat-form-field>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Descripción
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Describete!</mat-label>
+                    <textarea style="overflow:auto;resize:none" matInput rows="5" cols="40"
+                        [(ngModel)]="this.user!.user!.description" name="description"></textarea>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Ubicación
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecciona el estado en donde vives</mat-label>
+                    <mat-select [(ngModel)]="this.user!.user!.location" name="location">
+                        <mat-option *ngFor="let s of estados, let i = index" [value]="s">{{s}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p>Por el momento solo estamos disponibles en México 🇲🇽</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        ¿Creés en los horoscopos? 👀👀
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecciona tu signo del zodiaco</mat-label>
+                    <mat-select [(ngModel)]="this.user!.user!.zodiac_sign" name="zodiac_sign">
+                        <mat-option *ngFor="let s of signos, let i = index" [value]="i">{{s}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Preferencias Sexuales
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecciona tu orientación sexual</mat-label>
+                    <mat-select [(ngModel)]="this.user!.user!.id_sexual_orientation" name="id_sexual_orientation">
+                        <mat-option *ngFor="let o of orientations$ | async, let i = index"
+                            [value]="o.id_Sexual_orientation">{{o.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecciona tu genero</mat-label>
+                    <mat-select [(ngModel)]="this.user!.user!.gender" name="gender">
+                        <mat-option [value]="0">Hombre</mat-option>
+                        <mat-option [value]="1">Mujer</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>¿Te mostramos hombres o mujeres? 🫡</mat-label>
+                    <mat-select [(ngModel)]="this.user!.user!.show_me" name="show_me">
+                        <mat-option [value]="0">Hombres</mat-option>
+                        <mat-option [value]="1">Mujeres</mat-option>
+                        <mat-option [value]="2">Ambos</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Intereses
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+
+
+                <mat-chip-list multiple id="chipList" [selectable]="true">
+
+                    <mat-chip *ngFor="let chip of interestList" [selected]="chip.state ?? false"
+                        (click)="chip.state=!chip.state ;">
+                        {{chip.name}}
+                    </mat-chip>
+                </mat-chip-list>
+                <br>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Información general
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email 📧</mat-label>
+                    <input matInput placeholder="tu email" disabled [(ngModel)]="this.user!.user!.email" name="email" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de nacimiento 🎂</mat-label>
+                    <input matInput placeholder="tu fecha de nacimiento" disabled
+                        [(ngModel)]="this.user!.user!.birthdate" name="birthdate" />
+                </mat-form-field>
+            </mat-expansion-panel>
+            <mat-action-row>
+                <button  mat-raised-button color="primary" (click)="updateProfile()">Guardar</button>
+            </mat-action-row>
+        </mat-accordion>
+    </form>
+  
+    <button  mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
+
+
+</div>
+
+
+<ng-template #showLoading class="container center">
+
+    <mat-spinner diameter="50" strokeWidth="5"></mat-spinner>
+</ng-template>

@@ -1,0 +1,7 @@
+.container {
+    min-height: calc(100vh - 98px);
+}
+
+::ng-deep.mat-tab-label {
+    width: 50%;
+}
