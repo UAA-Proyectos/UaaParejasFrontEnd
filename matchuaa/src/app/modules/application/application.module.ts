@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 import { SearchMatchesComponent } from './search-matches/search-matches.component';
 import { MyMatchesComponent } from './my-matches/my-matches.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilePreviewComponent } from './profile-preview/profile-preview.component';
 import { ReportsComponent } from './reports/reports.component';
@@ -23,12 +22,14 @@ import { Report7Component } from './reports/report7/report7.component';
 import { Report8Component } from './reports/report8/report8.component';
 import { Report9Component } from './reports/report9/report9.component';
 import { Report10Component } from './reports/report10/report10.component';
+import { IgxBottomNavModule, IgxIconModule } from 'igniteui-angular';
+
 
 
 
 @NgModule({
   declarations: [ProfileComponent, OnLoginComponent, SearchMatchesComponent, MyMatchesComponent, ProfileFormComponent, ProfilePreviewComponent, ReportsComponent, ReportOneComponent, ReportTwoComponent, Report3Component, Report4Component, Report5Component, Report6Component, Report7Component, Report8Component, Report9Component, Report10Component],
-  imports: [ApplicationRoutingModule, AngularMaterialModule, CommonModule, FormsModule, ReactiveFormsModule, NgxChartsModule ],
+  imports: [IgxBottomNavModule, IgxIconModule, ApplicationRoutingModule, AngularMaterialModule, CommonModule, FormsModule, ReactiveFormsModule, NgxChartsModule ],
   exports: [RouterModule, OnLoginComponent]
 })
 export class ApplicationModule { }
