@@ -16,13 +16,17 @@ export class SearchMatchesComponent implements OnInit {
 
   constructor(private userService: UserServiceService, private toast: HotToastService) { }
 
+  no_matches: boolean = false;
+
   user: UserProfile | null = null
   ngOnInit(): void {
     this.userService.getPossibleMatch()
       .pipe(untilDestroyed(this), tap(console.log))
       .subscribe((user) => {
+        if (user == null) {
+          this.no_matches = true
+        }
         this.user = user;
-
       });
 
   }
@@ -39,6 +43,9 @@ export class SearchMatchesComponent implements OnInit {
         this.user = null
       }
       this.userService.getPossibleMatch().subscribe((user) => {
+        if (user == null) {
+          this.no_matches = true
+        }
         this.user = user;
       });
     })
@@ -57,6 +64,9 @@ export class SearchMatchesComponent implements OnInit {
         this.user = null
       }
       this.userService.getPossibleMatch().subscribe((user) => {
+        if (user == null) {
+          this.no_matches = true
+        }
         this.user = user;
 
       });

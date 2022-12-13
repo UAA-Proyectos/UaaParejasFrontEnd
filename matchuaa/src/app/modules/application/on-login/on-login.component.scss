@@ -41,6 +41,7 @@ mat-icon {
 
 .active {
   background: linear-gradient(330deg, rgba(229, 38, 135, 1) 64%, rgba(94, 23, 235, 1) 94%);
+  color: white !important;
 }
 
 .content {
@@ -56,4 +57,52 @@ mat-icon {
 
 .mat-sidenav-container {
   height: calc(100vh);
+}
+
+.bbb{
+	//dev
+	//height:2000px;
+  padding-top: 0 !important;
+	padding:10px;
+	padding-bottom:50px;
+}
+h1{
+	margin-bottom:2000px;
+}
+
+.mobile-bottom-nav{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1000;
+	
+	//give nav it's own compsite layer
+	will-change:transform;
+	transform: translateZ(0);
+	
+	display:flex;	
+	
+	height:50px;
+	
+	box-shadow: 0 -2px 5px -2px #333;
+	background-color:#fff;
+	
+	&__item{
+		flex-grow:1;
+		text-align:center;
+		font-size:12px;
+		
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+	}
+	&__item--active{
+		//dev
+		color:red;
+	}
+	&__item-content{ 
+		display:flex;
+		flex-direction:column;		
+	}
 }

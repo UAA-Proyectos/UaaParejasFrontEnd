@@ -1,39 +1,77 @@
-<mat-sidenav-container *ngIf="user$ | async  as user">
-  <mat-sidenav #sidenav mode="side" opened="isExpanded">
-    <mat-nav-list>
-
-      <mat-list-item (click)="isExpanded = !isExpanded">
-        <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">chevron_right
-        </mat-icon>
-      </mat-list-item>
-
-      <mat-list-item [routerLink]="'app/profile'" [routerLinkActive]="['active']">
-        <mat-icon mat-list-icon>person</mat-icon>
-        <span *ngIf="isExpanded" class="menu-item">Perfil</span>
-      </mat-list-item>
-
-      <mat-list-item [routerLink]="'app/search-match'" [routerLinkActive]="['active']">
-        <mat-icon mat-list-icon>important_devices</mat-icon>
-        <span *ngIf="isExpanded" class="menu-item">Buscar matches</span>
-      </mat-list-item>
-
-      <mat-list-item [routerLink]="'app/my-matches'" [routerLinkActive]="['active']">
-        <mat-icon mat-list-icon>supervisor_account</mat-icon>
-        <span *ngIf="isExpanded" class="menu-item">Mis matches</span>
-      </mat-list-item>
-
-      <mat-list-item *ngIf="user.user.user_type == 1" [routerLink]="'app/reports'" [routerLinkActive]="['active']">
-        <mat-icon mat-list-icon>query_stats</mat-icon>
-        <span *ngIf="isExpanded" class="menu-item">Reportes</span>
-      </mat-list-item>
-
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
-
-  <mat-sidenav-content>
+<div *ngIf="user$ | async  as user">
+<div class="bbb" *ngIf="innerWidth <=768 else isBigScreen">
+  <mat-toolbar *ngIf="!router.url.includes('search-match');">
+    <mat-toolbar-row>
+      <span class="span"><img class="img" src="assets/img/logo.svg" alt="header_logo"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-bottom-nav__item" [routerLink]="'app/profile'" [routerLinkActive]="['active']">
+      <div class="mobile-bottom-nav__item-content" >
+        <i class="material-icons">person</i>
+        perfil
+      </div>		
+    </div>
+    <div class="mobile-bottom-nav__item" [routerLink]="'app/search-match'" [routerLinkActive]="['active']">		
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">important_devices</i>
+        buscar match
+      </div>
+    </div>
+    <div class="mobile-bottom-nav__item"  [routerLink]="'app/my-matches'" [routerLinkActive]="['active']">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">supervisor_account</i>
+        matches
+      </div>		
+    </div>
     
+    <div class="mobile-bottom-nav__item" *ngIf="user.user.user_type == 1" [routerLink]="'app/reports'" [routerLinkActive]="['active']">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">query_stats</i>
+        stats
+      </div>		
+    </div>
+  </nav>
+</div>
+<ng-template #isBigScreen>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened="isExpanded">
+      <mat-nav-list>
+
+        <mat-list-item (click)="isExpanded = !isExpanded">
+          <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">chevron_right
+          </mat-icon>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="'app/profile'" [routerLinkActive]="['active']">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Perfil</span>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="'app/search-match'" [routerLinkActive]="['active']">
+          <mat-icon mat-list-icon>important_devices</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Buscar matches</span>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="'app/my-matches'" [routerLinkActive]="['active']">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Mis matches</span>
+        </mat-list-item>
+
+        <mat-list-item *ngIf="user.user.user_type == 1" [routerLink]="'app/reports'" [routerLinkActive]="['active']">
+          <mat-icon mat-list-icon>query_stats</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item">Reportes</span>
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
+
+    <mat-sidenav-content>
+
       <mat-toolbar *ngIf="!router.url.includes('search-match');">
         <mat-toolbar-row>
           <span class="span"><img class="img" src="assets/img/logo.svg" alt="header_logo"></span>
@@ -43,5 +81,8 @@
         <router-outlet></router-outlet>
       </div>
 
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-template>
+
+</div>

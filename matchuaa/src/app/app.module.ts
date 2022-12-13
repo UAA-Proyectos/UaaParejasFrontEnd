@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { PublicModule } from "./modules/public/public.module";
 import { HttpClientModule } from '@angular/common/http';
 import { AdminRoute, AuthRoute, PrivateRoute, PublicRoute } from './modules/auth/private-route';
-import { LOCALE_ID } from '@angular/core';
+import { LOCALE_ID, isDevMode } from '@angular/core';
 import { ApplicationModule } from './modules/application/application.module';
 import { FormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,13 @@ import { FormsModule } from '@angular/forms';
         BrowserAnimationsModule,
         HttpClientModule,
         ApplicationModule,
-        FormsModule
+        FormsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })
     ]
 })
 export class AppModule { }
